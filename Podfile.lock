@@ -1,0 +1,15 @@
+PODS:
+  - Aspects (1.4.1)
+  - GHConsole (1.2.5)
+
+DEPENDENCIES:
+  - Aspects
+  - GHConsole
+
+SPEC CHECKSUMS:
+  Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
+  GHConsole: cbcecf3d1d2166c0019c40b379b50228952b4133
+
+PODFILE CHECKSUM: 69f10c10fb5eed6fcd723c4415b80fd3fcc008cc
+
+COCOAPODS: 1.4.0
