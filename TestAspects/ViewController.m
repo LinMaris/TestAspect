@@ -26,8 +26,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // 测试热更新, 注入代码在AppDelegate中, 实际上注入代码从服务器获取,在合适的时候执行
     [self testHotFix];
     
+    // 测试Aspect基本功能
 //    [self testAspectTool];
 }
 
