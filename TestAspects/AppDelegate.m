@@ -30,20 +30,45 @@
 -(void)hotFix
 {
     [Felix fixIt];
-    NSString *fixScriptString = @" \
+    NSString *fixScriptStr = @" \
     fixInstanceMethodReplace('MightyCrash', 'divideUsingDenominator:', function(instance, originInvocation, originArguments){ \
-    if (originArguments[0] == 0) { \
-    console.log('zero goes here');\
-    } else { \
-    runInvocation(originInvocation); \
-    } \
-    }); \
-    \
-    ";
-    [Felix evalString:fixScriptString];
+        if (originArguments[0] == 0) { \
+        console.log('zero goes here');\
+        } else { \
+           runInvocation(originInvocation); \
+        }}\
+    );";
+    
+    NSString *fixScriptBefore = @" \
+    fixInstanceMethodBefore('MightyCrash', 'divideUsingDenominator:', function(instance, originInvocation, originArguments){ \
+        if (originArguments[0] == 0) { \
+            console.log('我之前知道是0');\
+        } else { \
+          runInvocation(originInvocation); \
+        }}\
+    );";
+    
+    NSString *fixScriptAfter = @" \
+    fixInstanceMethodAfter('MightyCrash', 'divideUsingDenominator:', function(instance, originInvocation, originArguments){ \
+        if (originArguments[0] == 0) { \
+        console.log('我之后知道是0');\
+        } else { \
+        runInvocation(originInvocation); \
+        }}\
+    );";
+    
+    /// Hook 类方法 和 实例方法是类似的
+    [Felix evalString:fixScriptBefore];
+    [Felix evalString:fixScriptStr];
+    [Felix evalString:fixScriptAfter];
+    
+    NSString *speakScriptStr = @"\
+    runInstanceWith2Paramters('MightyCrash', 'eat:', 'banner', 'Apple',  function(value,value2,value3){\
+        console.log(value)\
+    });";
+    
+//    [Felix evalString:speakScriptStr];
 }
-
-
 
 
 

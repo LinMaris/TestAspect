@@ -12,4 +12,10 @@
 
 - (float)divideUsingDenominator:(NSInteger)denominator;
 
+-(void)talk;
+
+-(void)speak: (NSString *)language;
+
+-(NSString *)eat: (NSString *)food1 food2: (NSString *)food2;
+
 @end
